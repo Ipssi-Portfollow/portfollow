@@ -22,7 +22,7 @@ class UserRegistrationType extends AbstractType
     {
         $builder
             ->add('pseudo',TextType::class )
-            ->add('mail', EmailType::class)
+            ->add('email', EmailType::class)
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'mapped' => false,
