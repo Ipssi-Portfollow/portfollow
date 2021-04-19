@@ -1,9 +1,17 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}New User{% endblock %}
+{{ include('header/header.html.twig') }}
 
 {% block body %}
-    <h1>Create new User</h1>
+
+<style>
+    body{
+        background-image: url("{{ asset('images/fond.jpg') }}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+    }
+
+</style>
 
     {{ include('user/_form.html.twig') }}
 
