@@ -15,4 +15,4 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install Composer
-        run: php composer.phar --working-dir=/home/user/folder/ install
+        run: composer install
