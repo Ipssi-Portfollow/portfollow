@@ -1,0 +1,59 @@
+
+{{ include('header/header.html.twig') }}
+
+{% block body %}
+
+<style>
+    body{
+        background-image: url("{{ asset('images/fond.jpg') }}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+    }
+
+</style>
+
+
+<div class="form-connexion">
+
+    <form method="post" class="f-insc">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+
+        
+
+        <h1 style="text-align: center; font-size: 24px;">Portfollow</h1>
+
+        <div class="mail-section">
+            <input type="text" value="{{ last_username }}" name="mail" id="inputMail"required>
+            <label for="inputMail" class="mail"><span class="content-name">Email</span></label>
+        </div>
+
+        <div class="mail-section">
+            <input type="password" name="password" id="inputPassword" required>
+            <label for="inputPassword" class="mail"><span class="content-name">Mot de passe</span></label>
+        </div>
+        
+
+        <input type="hidden" name="_csrf_token"
+            value="{{ csrf_token('authenticate') }}"
+        >
+        <br><br>
+        <button class="btn btn-lg btn-primary" type="submit" style="width: 100%;">
+            Connexion
+        </button>
+
+        <br><br>
+        <div style = "text-align: center">
+            <p>Vous n'avez pas de compte ? <br><a href="{{ path('user_registration') }}">Inscrivez-vous</a></p>
+        </div>
+    </form>
+</div>
+{% endblock %}
