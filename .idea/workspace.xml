@@ -31,80 +31,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e7a2572-b8fd-497f-b5de-f595cd34c84e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/portfollow.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/portfollow.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/.env.test" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/bin/console" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/bin/phpunit" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/composer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/composer.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/bundles.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/cache.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/dev/debug.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/dev/monolog.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/dev/web_profiler.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/doctrine.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/doctrine_migrations.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/framework.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/mailer.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/notifier.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/prod/deprecations.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/prod/doctrine.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/prod/monolog.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/prod/routing.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/routing.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/security.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/sensio_framework_extra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/test/framework.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/test/monolog.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/test/twig.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/test/validator.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/test/web_profiler.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/translation.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/twig.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/validator.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/preload.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/routes.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/routes/annotations.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/routes/dev/framework.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/routes/dev/web_profiler.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/services.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/migrations/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/migrations/Version20210315095849.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/migrations/Version20210419102202.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/phpunit.xml.dist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/public/css/portfollow.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/public/images/fond.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/public/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/public/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Controller/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Controller/AuthentificatorController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Controller/HomeController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Controller/UserController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Entity/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Entity/Comment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Entity/Post.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Entity/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Form/UserRegistrationType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Kernel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Repository/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Repository/CommentRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Repository/PostRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Repository/UserRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Security/UserAuthenticator.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/symfony.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/templates/base.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/templates/header/header.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/templates/home/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/templates/security/login.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/templates/user/_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/templates/user/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/templates/user/new.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/tests/bootstrap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/translations/.gitignore" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/php.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -329,6 +256,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1pmrSyN1eNWYAmDWYqTOGEbklGW" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -357,6 +287,14 @@
       <updated>1615799112037</updated>
       <workItem from="1615799114898" duration="7586000" />
     </task>
+    <task id="LOCAL-00001" summary="ci-test">
+      <created>1623678386273</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1623678386273</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,5 +311,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ci-test" />
+    <option name="LAST_COMMIT_MESSAGE" value="ci-test" />
   </component>
 </project>
