@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7e7a2572-b8fd-497f-b5de-f595cd34c84e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.github/workflows/php.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/php.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,6 +147,14 @@
       <updated>1615799112037</updated>
       <workItem from="1615799114898" duration="996000" />
     </task>
+    <task id="LOCAL-00001" summary="wip ci">
+      <created>1623675406675</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1623675406675</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,5 +162,9 @@
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="wip ci" />
+    <option name="LAST_COMMIT_MESSAGE" value="wip ci" />
   </component>
 </project>
