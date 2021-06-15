@@ -22,6 +22,7 @@ class AuthentificatorController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
+
         // récupérer l'erreur de connexion si il y a
         $error = $authenticationUtils->getLastAuthenticationError();
         // dernier email entré par l'utilisateur
