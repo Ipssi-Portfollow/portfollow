@@ -7,12 +7,18 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User implements UserInterface
 {
+    /**
+    +@ORM\Column(type="string", unique=true, nullable=true)
+     */
+    private $apiToken;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -21,14 +27,31 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=200)
      */
     private $pseudo;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="email", type="string", unique=true)
+     * @Assert\Email
      */
     private $email;
+
+    /**
+     * @return mixed
+     */
+    public function getApiToken()
+    {
+        return $this->apiToken;
+    }
+
+    /**
+     * @param mixed $apiToken
+     */
+    public function setApiToken($apiToken): void
+    {
+        $this->apiToken = $apiToken;
+    }
 
     /**
      * @var string The hashed password
@@ -192,6 +215,8 @@ class User implements UserInterface
 
     public function getRoles()
     {
+        return array('ROLE_USER');
+
         // TODO: Implement getRoles() method.
     }
 
@@ -202,7 +227,7 @@ class User implements UserInterface
 
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
+        return $this->email;
     }
 
     public function eraseCredentials()
