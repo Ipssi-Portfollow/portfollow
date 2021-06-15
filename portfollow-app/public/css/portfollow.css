@@ -74,3 +74,69 @@
     transform: translateX(0%);
 }
 
+.profil{
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.userInfo{
+    display: flex;
+    border-bottom: 1px solid #8e8e8e;
+    margin-bottom: 20px;
+}
+
+.image{
+    margin-right: 100px;
+}
+
+.infos{
+    margin-bottom: 50px;
+}
+
+.pseudo{
+    font-weight: none!important;
+}
+
+.posts{
+    display: flex; 
+    flex-wrap: wrap;
+}
+
+.post{
+    width: calc(1/3 * 95%);
+    height: 250px;
+    margin-bottom: 15px;
+    margin-right: calc(1/3 * 5%);
+
+}
+
+.photo, .photo_info{
+    width: 50%;
+}
+
+.photo{
+    background-color: red;
+}
+
+.header_img, .desc_img{
+    margin-left: 15px;
+}
+
+.header_post, .description{
+    display: flex;
+}
+
+.header_post {
+    padding: 15px;
+    border-bottom: 1px solid rgba(var(--b38,219,219,219),1);
+}
+
+.description{
+    padding: 15px;
+}
+
+.header_info, .desc_info{
+    margin-left: 15px;
+}
+

@@ -1,50 +1,80 @@
-{% extends 'base.html.twig' %}
+{{ include('header/header.html.twig') }}
 
-{% block title %}Profile{% endblock %}
 
 {% block body %}
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Pseudo</th>
-            <th>Email</th>
-            <th>pict</th>
-            <th>bio</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{ user.pseudo }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.pict }}</td>
-                <td>{{ user.bio }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="{{ path('NewPost') }}">Nouveau Poste</a>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>titre</th>
-            <th>pict</th>
-            <th>position</th>
-            <th>description</th>
-            <th>lien edite</th>
-            <th>lien delet</th>
-        </tr>
-        </thead>
-        <tbody>
-            {% for post in posts %}
-            <tr>
-                <td>{{ post.title }}</td>
-                <td>{{ post.picts }}</td>
-                <td>{{ post.localisation }}</td>
-                <td>{{ post.description }}</td>
-                <td><a href="/ShowPost/{{ post.id }}">Par ici</a></td>
-                <td><a href="/deletPost/{{ post.id }}">Par ici</a></td>
-            </tr>
-            {% endfor %}
-        
-        </tbody>
-    </table>
+
+<style>
+    .post{
+        background-image: url("{{ asset('images/photo.jpeg') }}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+    }
+</style>
+
+<div class="profil">
+    <div class="userInfo">
+        <div class= "image">
+            <img style = "height: 150px; width: 150px; border-radius:100px;" src="{{ asset('images/lion.jpg') }}">
+        </div>
+        <div class= "infos">
+            <h1 class="pseudo">{{user.pseudo}}   <a class="btn btn-success" style="font-weight: bold; font-size: 16px; border-radius: 100px;" href="{{ path('NewPost') }}"><strong>+</strong></a>
+</h1>
+            <br>
+            {{user.bio}}
+        </div>
+    </div>
+
+    <div class="posts">
+        {% for post in posts %}
+            <div class="post" data-toggle="modal" data-target="#exampleModal">
+            </div>           
+            <div class="modal fade"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">{{ post.title }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <div class="modal-body" style="display:flex; padding:0px;">
+                        <div class="photo">
+                            {{post.picts}}
+                        </div>
+                        <div class= "photo_info">
+                            <div class = "header_post">
+                                <div class="header_img">
+                                    {{user.pict}}
+                                </div>
+                                <div class="header_info">
+                                    {{user.pseudo}}<br>
+                                    {{post.localisation}}
+                                </div>
+                            </div>
+                            <div class="description">
+                                <div class="desc_img">
+                                    {{user.pict}}
+                                </div>
+                                <div class="desc_info">
+                                    {{user.pseudo}}
+                                    {{post.description}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="/ShowPost/{{ post.id }}" class="btn btn-primary">Modifier</a>
+                        <a href="/deletost/{{ post.id }}" class="btn btn-danger">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        </div>     
+        {% endfor %}
+    </div>
+</div>
+<br>
+    
+    
+    
 {% endblock %}
