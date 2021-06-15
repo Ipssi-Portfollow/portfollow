@@ -16,7 +16,11 @@ security:
             pattern: ^/(_(profiler|wdt)|css|cards|js)/
             security: false
         main:
-            anonymous: lazy
+            anonymous: true
+            lazy: true
+            form_login:
+                login_path: login
+                check_path: login
             guard:
                 authenticators:
                     - App\Security\UserAuthenticator

@@ -18,9 +18,9 @@ class AuthentificatorController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         // si l'utilisateur accède à "\login" en étant déjà connecté
-        if ($this->getUser()) {
-            return $this->redirectToRoute('user_list');
-        }
+        //if ($this->getUser()) {
+        //    return $this->redirectToRoute('user_list');
+        //}
 
         // récupérer l'erreur de connexion si il y a
         $error = $authenticationUtils->getLastAuthenticationError();

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PostController!{% endblock %}
+
+{% block body %}
+ <table class="table">
+        <thead>
+        <tr>
+            <th>titre</th>
+            <th>pict</th>
+            <th>position</th>
+            <th>description</th>
+            <th>edit</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ post.title }}</td>
+                <td>{{ post.picts }}</td>
+                <td>{{ post.localisation }}</td>
+                <td>{{ post.description }}</td>
+                <td><a href="/EditPost/{{ post.id }}">Par ici</a></td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

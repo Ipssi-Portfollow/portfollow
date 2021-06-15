@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Pseudo</th>
+            <th>Email</th>
+            <th>pict</th>
+            <th>bio</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ user.pseudo }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.pict }}</td>
+                <td>{{ user.bio }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{{ path('NewPost') }}">Nouveau Poste</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>titre</th>
+            <th>pict</th>
+            <th>position</th>
+            <th>description</th>
+            <th>lien edite</th>
+            <th>lien delet</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+            <tr>
+                <td>{{ post.title }}</td>
+                <td>{{ post.picts }}</td>
+                <td>{{ post.localisation }}</td>
+                <td>{{ post.description }}</td>
+                <td><a href="/ShowPost/{{ post.id }}">Par ici</a></td>
+                <td><a href="/deletPost/{{ post.id }}">Par ici</a></td>
+            </tr>
+            {% endfor %}
+        
+        </tbody>
+    </table>
+{% endblock %}

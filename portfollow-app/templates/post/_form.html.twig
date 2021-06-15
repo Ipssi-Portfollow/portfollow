@@ -1,0 +1,31 @@
+
+<div class="form-inscription">
+
+    <div class = "f-insc">
+            {{ form_start(form) }}
+            <h1 style="text-align:center;">Portfollow</h1>
+                
+            <div>
+                {{ form_label(form.title) }}
+                {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div>
+                {{ form_label(form.picts) }}
+                {{ form_widget(form.picts, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div>
+                {{ form_label(form.localisation) }}
+                {{ form_widget(form.localisation, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div >
+                {{ form_label(form.description) }}
+                {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+            </div>   
+
+            <br>
+            <button style="width:100%;"class="btn btn-primary">{{ button_label|default('Ajouter post') }}</button>
+
+            {{ form_end(form) }}
+    </div>
+
+</div>

@@ -24,6 +24,26 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("/user/{id}", name="userProfile", methods={"GET"})
+     */
+    public function userProfile(UserRepository $userRepository, int $id): Response
+    {
+        $user = $userRepository->findOneById($id);
+        $posts = $user->getPosts();
+        if($user != null){
+            return $this->render('user/userProfile.html.twig', [
+                'user' => $user,
+                'posts' => $posts,
+            ]);
+        }else{
+            return $this->render('error.html.twig', [
+                'error' => "le compte n'as pas été trouvé",
+            ]);
+        }
+        
+    }
+
+    /**
      * @Route("/new", name="user_registration", methods={"GET", "POST"})
      * @param Request $request
      * @param UserPasswordEncoderInterface $encoder
