@@ -1,0 +1,76 @@
+.form-connexion{   
+    width: 20%;
+    margin: auto; 
+    margin-top: 25vh; 
+    transform: translateY(-25%);
+}
+
+.form-inscription{   
+    width: 20%;
+    margin: auto; 
+    margin-top: 15vh;
+    transform: translateY(-15%); 
+}
+
+.f-insc{
+    background-color: #fff;
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
+    border-radius: 5px;
+    padding: 10%;
+    box-shadow: 0px 0px 5px black;
+}
+
+.mail-section{
+    position: relative;
+    height: 75px;
+    overflow: hidden;
+}
+
+.mail-section input{
+    width: 100%;
+    height: 100%;
+    color: #595f6e;
+    padding-top: 20px;
+    border: none;
+    outline: none;
+}
+
+.mail-section label {
+    position: absolute; 
+    bottom: 0px;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid black;
+}
+
+.mail-section label::after{
+    content: "";
+    position: absolute; 
+    left: 0px;
+    bottom: -1px;
+    height: 100%;
+    width: 100%;
+    border-bottom: 3px solid #5fa8d3;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.content-name {
+    position: absolute; 
+    bottom: 5px;
+    left: 0px;
+    transition: all 0.3s ease;
+}
+
+.mail-section input:focus + .mail .content-name, .mail-section input:valid + .mail .content-name{
+    transform: translateY(-150%);
+    font-size: 14px;
+    color: #5fa8d3;
+}
+
+.mail-section input:focus + .mail::after, .mail-section input:valid + .mail::after{
+    transform: translateX(0%);
+}
+

@@ -1,7 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e7a2572-b8fd-497f-b5de-f595cd34c84e" name="Default Changelist" comment="" />
+    <list default="true" id="7e7a2572-b8fd-497f-b5de-f595cd34c84e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/portfollow-app/templates/user/_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portfollow-app/templates/user/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/portfollow-app/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/portfollow-app/src/Entity/User.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -131,9 +166,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/portfollow-app/templates/user" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/portfollow-app/templates/user" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -143,7 +184,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615799112037</updated>
-      <workItem from="1615799114898" duration="996000" />
+      <workItem from="1615799114898" duration="7586000" />
     </task>
     <task id="LOCAL-00001" summary="wip ci">
       <created>1623675406675</created>
@@ -180,10 +221,24 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="oldMeFiltersMigrated" value="true" />
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="wip ci" />
-    <option name="LAST_COMMIT_MESSAGE" value="wip ci" />
+  <component name="WindowStateProjectService">
+    <state x="964" y="-840" key="#com.intellij.ide.util.MemberChooser" timestamp="1615808906719">
+      <screen x="195" y="-1080" width="1920" height="1080" />
+    </state>
+    <state x="964" y="-840" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900/195.-1080.1920.1080@195.-1080.1920.1080" timestamp="1615808906719" />
+    <state x="893" y="-767" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615809281233">
+      <screen x="195" y="-1080" width="1920" height="1080" />
+    </state>
+    <state x="893" y="-767" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900/195.-1080.1920.1080@195.-1080.1920.1080" timestamp="1615809281233" />
   </component>
 </project>
