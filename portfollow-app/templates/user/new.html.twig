@@ -1,5 +1,5 @@
 
-{{ include('header/header.html.twig') }}
+{% include 'layout/navbar.html.twig'%}
 
 {% block body %}
 
@@ -9,6 +9,9 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-position: 50% 50%;
+    }
+    .navbar{
+        display: none!important;
     }
 
 </style>
