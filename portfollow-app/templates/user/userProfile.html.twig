@@ -1,50 +1,31 @@
-{% extends 'base.html.twig' %}
+{% include 'layout/navbar.html.twig'%}
 
-{% block title %}Profile{% endblock %}
-
+<br>
 {% block body %}
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Pseudo</th>
-            <th>Email</th>
-            <th>pict</th>
-            <th>bio</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{ user.pseudo }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.pict }}</td>
-                <td>{{ user.bio }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="{{ path('NewPost') }}">Nouveau Poste</a>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>titre</th>
-            <th>pict</th>
-            <th>position</th>
-            <th>description</th>
-            <th>lien poste</th>
-            <th>lien delet</th>
-        </tr>
-        </thead>
-        <tbody>
-            {% for post in posts %}
-            <tr>
-                <td>{{ post.title }}</td>
-                <td>{{ post.picts }}</td>
-                <td>{{ post.localisation }}</td>
-                <td>{{ post.description }}</td>
-                <td><a href="/ShowPost/{{ post.id }}">Par ici</a></td>
-                <td><a href="/deletPost/{{ post.id }}">Par ici</a></td>
-            </tr>
-            {% endfor %}
-        
-        </tbody>
-    </table>
+
+<div class="profil">
+    <div class="userInfo">
+        <div class= "image">
+            <img style = "height: 150px; width: 150px; border-radius:100px;" src="{{ asset('images/lion.jpg') }}">
+        </div>
+        <div class= "infos">
+            <h1 class="pseudo">{{user.pseudo}}   <a class="btn btn-success" style="font-weight: bold; font-size: 16px; border-radius: 100px;" href="{{ path('NewPost') }}"><strong>+</strong></a>
+</h1>
+            <br>
+            {{user.bio}}
+        </div>
+    </div>
+
+    <div class="posts">
+        {% for post in posts %}
+        <div class = "post">
+            {{ post.picts}}
+            <br>
+            <td><a class="btn btn-primary" href="/ShowPost/{{ post.id }}">Voir Plus</a></td>
+        </div>  
+        {% endfor %}
+    </div>
+</div>
+
+  
 {% endblock %}

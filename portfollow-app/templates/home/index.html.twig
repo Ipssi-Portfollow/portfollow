@@ -1,35 +1,29 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Portfollow{% endblock %}
-
 {% block body %}
- <table class="table">
-        <thead>
-        <tr>
-            <th>titre</th>
-            <th>pict</th>
-            <th>date</th>
-            <th>position</th>
-            <th>description</th>
-            <th>userName</th>
-            <th>postLink</th>
-            <th>userLink</th>
-            
-        </tr>
-        </thead>
-        <tbody>
-            {% for post in posts %}
-            <tr>
-                <td>{{ post.title }}</td>
-                <td>{{ post.picts }}</td>
-                <td>{{ post.addDate |date("Y-m-d H:i:s") }}</td>
-                <td>{{ post.localisation }}</td>
-                <td>{{ post.description }}</td>
-                <td>{{ post.user.pseudo }}</td>
-                <td><a href="ShowPost/{{ post.id }}">Par ici</a></td>
-                <td><a href="user/{{ post.user.id() }}">Par ici</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+
+{% include 'layout/navbar.html.twig'%}
+
+<br>
+
+<div class = "posts_home">
+    {% for post in posts %}
+        <div class="post_home">
+            <div class = "post_header_home">
+                <div class="prem_lign_head">
+                    <p class="spec">{{ post.title }}</p>
+                    <a class = "btn btn-primary" href="ShowPost/{{ post.id }}">Voir Plus</a>
+                </div>
+                <p>{{ post.localisation }}</p>
+            </div>
+            <div class = "post_image_home">
+                    {{ post.picts }}
+            </div>
+            <div class="post_footer_home">
+                <div class="prem_lign_foot">
+                    <a style ="margin-right: 15px;" href="user/{{ post.user.id() }}" >{{ post.user.pseudo}}</a>
+                    {{ post.description }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}
