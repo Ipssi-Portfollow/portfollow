@@ -4,8 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Entity\User;
+use App\Entity\Images;
 use App\Repository\PostRepository;
+use App\Repository\CommentRepository;
 use App\Repository\UserRepository;
+use App\Repository\ImagesRepository;
 use App\Form\PostRegistrationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,36 +18,46 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostController extends AbstractController
 {
     /**
-     * @Route("/post", name="post")
-     */
-    public function index(): Response
-    {
-        return $this->render('post/index.html.twig', [
-            'controller_name' => 'PostController',
-        ]);
-    }
-
-    /**
      * @Route("/NewPost", name="NewPost")
      */
     public function New(UserRepository $userRepository,Request $request): Response
     {
+        if($this->getUser() == null){
+            return $this->render('error.html.twig', [
+                'error' => "Vous n'aver pas les autorisations pour accédé a cette fonctionalité",
+            ]);
+        }
+
         $post = new Post();
         $form = $this->createForm(PostRegistrationType::class, $post);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            //à remplacer par le réel user
-            $post->setUser($userRepository->findOneById(1));
-            //à remplacer par le réel user
+            //images
+            $images = $form->get('images')->getData();
+            foreach($images as $image) {
+                $fichier = md5(uniqid()). '.' . $image->guessExtension() ;
+
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+
+                $img = new Images();
+                $img->setPictName($fichier);
+                $post->addImage($img);
+            }
+
+            $post->setUser($this->getUser());
+            $post->setAddDate();
             
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($post);
             $entityManager->flush();
 
             return $this->redirectToRoute('userProfile', array(
-                'id' => 1 //à remplacer par le réel user
+                'id' => $this->getUser()->getId()
             ));
         }
 
@@ -57,11 +70,14 @@ class PostController extends AbstractController
     /**
      * @Route("/ShowPost/{id}", name="ShowPost" , methods={"GET"})
      */
-    public function ShowPost(PostRepository $postRepository, int $id): Response
+    public function ShowPost(PostRepository $postRepository, CommentRepository $commentRepository, int $id): Response
     {
         $post = $postRepository->findOneById($id);
+        $comments = $commentRepository->findBy(array('post' =>  $post) );
+
         return $this->render('post/show.html.twig', [
             'post' => $post,
+            'comments' => $comments,
         ]);
     }
 
@@ -71,10 +87,33 @@ class PostController extends AbstractController
     public function EditPost(PostRepository $postRepository,Request $request, int $id): Response
     {
         $post = $postRepository->findOneById($id);
+
+        //vérification que le post appartiens bien a la persone qui cherche à le modifier
+        if($post->getUser()->getId() != $this->getUser()->getId()){
+            return $this->render('error.html.twig', [
+                'error' => "Vous n'aver pas les autorisations pour accédé a cette fonctionalité",
+            ]);
+        }
+
         $form = $this->createForm(PostRegistrationType::class, $post);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //images
+            $images = $form->get('images')->getData();
+            foreach($images as $image) {
+                $fichier = md5(uniqid()). '.' . $image->guessExtension() ;
+
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+
+                $img = new Images();
+                $img->setPictName($fichier);
+                $post->addImage($img);
+            }
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($post);
@@ -92,18 +131,49 @@ class PostController extends AbstractController
     }
 
     /**
+     * @Route("/deletImage/{id}", name="deletImage")
+     */
+    public function DeletImage(ImagesRepository $imagesRepository, int $id): Response
+    {
+        $images = $imagesRepository->findOneById($id);
+        $post = $images->getPost();
+        $user = $post->getUser();
+
+        if( $this->getUser()->getId() == $user->getId() ){
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($images);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('ShowPost', array(
+                'id' => $post->getId()
+            ));
+        }
+
+        return $this->redirectToRoute('ShowPost', array(
+            'id' => $post->getId()
+        ));
+    }
+
+    /**
      * @Route("/deletPost/{id}", name="deletPost")
      */
     public function DeletPost(PostRepository $postRepository, int $id): Response
     {
         $post = $postRepository->findOneById($id);
 
+        //vérification que le post appartiens bien a la persone qui cherche à le détruire
+        if($post->getUser()->getId() != $this->getUser()->getId()){
+            return $this->render('error.html.twig', [
+                'error' => "Vous n'aver pas les autorisations pour accédé a cette fonctionalité",
+            ]);
+        }
+
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($post);
         $entityManager->flush();
 
         return $this->redirectToRoute('userProfile', array(
-            'id' => 1 //à remplacer par le réel Id user
+            'id' => $this->getUser()->getId()
         ));
     }
 }

@@ -32,6 +32,11 @@ class Comment
      */
     private $text;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $addDate;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Comment
     public function setText(string $text): self
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    public function getAddDate(): ?\DateTimeInterface
+    {
+        return $this->addDate;
+    }
+
+    public function setAddDate(): self
+    {
+        $this->addDate = new \DateTime();
 
         return $this;
     }
