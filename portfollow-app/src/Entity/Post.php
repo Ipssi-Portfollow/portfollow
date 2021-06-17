@@ -49,9 +49,20 @@ class Post
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $addDate;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Images::class, mappedBy="post", orphanRemoval=true, cascade={"persist"})
+     */
+    private $images;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -143,6 +154,48 @@ class Post
             // set the owning side to null (unless already changed)
             if ($comment->getPost() === $this) {
                 $comment->setPost(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAddDate(): ?\DateTimeInterface
+    {
+        return $this->addDate;
+    }
+
+    public function setAddDate(): self
+    {
+        $this->addDate = new \DateTime();
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Images[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Images $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setPost($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Images $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getPost() === $this) {
+                $image->setPost(null);
             }
         }
 

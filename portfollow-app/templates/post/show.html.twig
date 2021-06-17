@@ -10,6 +10,7 @@
             <th>pict</th>
             <th>position</th>
             <th>description</th>
+            <th>images</th>
             <th>edit</th>
         </tr>
         </thead>
@@ -19,8 +20,41 @@
                 <td>{{ post.picts }}</td>
                 <td>{{ post.localisation }}</td>
                 <td>{{ post.description }}</td>
+                <td>
+                {% for image in post.images %}
+                 <img src="{{ asset('/uploads/' ~ image.pictName) }}" width="150px;" height="150px;">
+                    {% if image.post.user.id == app.user.id %}
+                        <a href="/deletImage/{{ image.id }}">supression Imgage</a>
+                    {% endif %}
+                {% endfor %}
+                </td>
                 <td><a href="/EditPost/{{ post.id }}">Par ici</a></td>
             </tr>
         </tbody>
     </table>
+
+    <div>
+        <form action="/NewComment/{{ post.id }}" method="post">
+            <div class="form-example">
+                <label for="name">critique: </label>
+                <input type="text" name="critique" id="critique" required>
+                <input type="submit" value="envoyer la critique">
+            </div>
+        </form>
+    </div>
+    <div>
+    {% if comments != null %}
+        {% for comment in comments %}
+        <div>
+            <hr>
+            <p> <b>{{comment.user.pseudo}}</b> : </p>
+            <p> {{comment.text}} </p>
+            <span>{{comment.addDate |date("Y-m-d H:i:s") }}</span>||
+            {% if comment.user.id == app.user.id %}
+                <a href="/EditComment/{{comment.id}}"> modifier </a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    {% endif %}
+    </div>
 {% endblock %}
