@@ -27,6 +27,14 @@
     color: black!important; 
     background-color: white!important;
 }
+
+.image{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        height: 300px;
+        width: 100%;
+    }
 </style>
 
 {% include 'layout/navbar.html.twig'%}
@@ -51,17 +59,19 @@
                             <a class = "btn btn-danger" href="/sub/{{ post.user.id }}">s'abonner à {{ post.user.pseudo }}</a>
                         {% endif %}
                     {% endif %}
-
                 </div>
                 <p>{{ post.localisation }}</p>
             </div>
             <div class = "post_image_home" style="position:relative; display: block;">
                 {% for image in post.images %}
                 <div class = "slide">
-                    <img src="{{ asset('/uploads/' ~ image.pictName) }}" width="100%;" height="300px;">
-                    
+                    <div class="image" style="background-image: url({{ asset('/uploads/' ~ image.pictName) }})">
+                    </div>
+                    <!--<img src="{{ asset('/uploads/' ~ image.pictName) }}" width="100%;" height="300px;">-->
+                    {% if post.images|length > 1  %}
                     <button class="btn aff w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
                     <button class="btn aff w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+                    {% endif %}
                     {% if image.post.user.id == app.user.id %}
                     
                         <div style= "text-align: center; padding: 20px;">
@@ -76,6 +86,12 @@
                     <a style ="color: black; font-weight: bold; margin-right: 15px;" href="/user/{{ post.user.id() }}" >{{ post.user.pseudo}}</a>
                     {{ post.description }}
                 </div>
+                <form action="/NewComment/{{ post.id }}" method="post">
+                            <div class="form-example" style="display: flex; padding: 0px;" >
+                                <input type="text" placeholder="Ajouter une critique" class="form-control" name="critique" id="critique" required>
+                                <input class="btn" type="submit" value="Publier">
+                            </div>
+                        </form>
                 <div class = "commentaire">
                     {% if comments != null %}
                         {% for comment in comments %}
@@ -88,12 +104,7 @@
                         {% endfor %}
                     {% endif %}
                      <div>
-                        <form action="/NewComment/{{ post.id }}" method="post">
-                            <div class="form-example" style="display: flex; padding: 0px;" >
-                                <input type="text" class="form-control" name="critique" id="critique" required>
-                                <input class="btn" type="submit" value="Publier">
-                            </div>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
