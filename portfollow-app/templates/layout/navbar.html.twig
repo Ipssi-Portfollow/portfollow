@@ -40,9 +40,10 @@
             {% endif %}
       {% endif %}
     </ul>
+
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+      <input class="form-control mr-sm-2" type="search" id="chercherData" placeholder="Rechercher" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" id="chercher" type="submit">Rechercher</button>
     </form>
 
     <li class="nav-item deco">
@@ -50,5 +51,24 @@
       </li>
   </div>
 </nav>
+
+
+    <script>
+        $('#chercher').click(function(){
+
+            let data = $('#chercherData').val();
+
+            console.log(data)
+
+            if(data.length > 0 ){
+                let url = "https://127.0.0.1:8000/user/recherche/"+data;
+                console.log('coucou')
+                window.open(url, '_blank')
+             //   location.href = url
+            }
+
+
+        });
+    </script>
 
 {% endblock %}

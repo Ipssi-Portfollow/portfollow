@@ -24,6 +24,17 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("/user/recherche/{data}", name="user_recherche", methods={"GET"})
+     */
+    public function recherche(UserRepository $userRepository,Request $request,$data): Response
+    {
+        $users = $userRepository->findAllData($data);
+        return $this->render('user/recherche.html.twig', [
+            'users' => $users,
+        ]);
+    }
+
+    /**
      * @Route("/user/{id}", name="userProfile", methods={"GET"})
      */
     public function userProfile(UserRepository $userRepository, int $id): Response
