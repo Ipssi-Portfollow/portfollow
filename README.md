@@ -10,7 +10,7 @@ In order to run the project you will need to check your local machine requiremen
 
 ## Requirements
 - Symfony 5
-- A LAMP like WAMP, MAMP who will run the PHP server 
+- A LAMP like WAMP or MAMP who will create the PHP server 
 
 ### Cloning the repository 
 You can clone the repository on your machine and use the client as your own risk.
