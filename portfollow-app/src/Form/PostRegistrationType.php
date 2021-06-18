@@ -21,7 +21,6 @@ class PostRegistrationType extends AbstractType
     {
         $builder
             ->add('title',TextType::class )
-            ->add('picts', TextType::class)
             ->add('description', TextareaType::class)
             ->add('localisation', TextType::class)
             ->add('images', FileType::class,[

@@ -1,0 +1,14 @@
+{% include 'layout/navbar.html.twig'%}
+
+<br>
+{% block body %}
+
+
+{% for abo in aboListe %}
+{{ dump(abo) }}
+<div>
+
+</div>  
+{% endfor %}
+  
+{% endblock %}
