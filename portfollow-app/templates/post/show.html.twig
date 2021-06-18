@@ -44,7 +44,21 @@
             <div class = "post_header_home">
                 <div class="prem_lign_head">
                     <p class="spec">{{ post.title }}</p>
-                    <a class = "btn btn-primary" href="/EditPost/{{ post.id }}">Modifier</a>
+                    {% if app.user.id == post.user.id %}
+                    <a class = "btn btn-success" href="/EditPost/{{ post.id }}">Modifier</a>
+                    {% endif %}
+                    
+                    {% if app.user.id != null %}
+                        {{ countLike }} LIKE !
+                        {% if allReadyLike != true %}
+                        <a class = "btn btn-danger" href="/likePost/{{ post.id }}">Liker</a>
+                        {% elseif allReadyLike == true %}
+                        <a class = "btn btn-danger" href="/dislikePost/{{ post.id }}">Disliker</a>
+                        {% endif %}
+                        {% if app.user.id != post.user.id %}
+                            <a class = "btn btn-danger" href="/sub/{{ post.user.id }}">s'abonner à {{ post.user.pseudo }}</a>
+                        {% endif %}
+                    {% endif %}
                 </div>
                 <p>{{ post.localisation }}</p>
             </div>

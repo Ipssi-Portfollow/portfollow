@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
@@ -40,7 +41,12 @@ class UserRegistrationType extends AbstractType
                 'second_options' => ['label' => 'Confirmez votre mot de passe'],
                 'invalid_message' => 'Les mots de passe saisis ne sont pas identiques'
             ])
-            ->add('pict', TextType::class)
+            ->add('image', FileType::class,[
+                'label' => false,
+                'multiple' => false,
+                'mapped' => false,
+                'required' => false
+            ])
             ->add('bio', TextareaType::class)
         ;
     }

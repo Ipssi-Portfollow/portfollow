@@ -25,11 +25,6 @@ class Post
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $picts;
-
-    /**
      * @ORM\Column(type="text")
      */
     private $description;
@@ -59,10 +54,17 @@ class Post
      */
     private $images;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="postLike")
+     */
+    private $userLike;
+
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->userLike = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -78,18 +80,6 @@ class Post
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getPicts(): ?string
-    {
-        return $this->picts;
-    }
-
-    public function setPicts(string $picts): self
-    {
-        $this->picts = $picts;
 
         return $this;
     }
@@ -201,4 +191,32 @@ class Post
 
         return $this;
     }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUserLike(): Collection
+    {
+        return $this->userLike;
+    }
+
+    public function addUserLike(User $userLike): self
+    {
+        if (!$this->userLike->contains($userLike)) {
+            $this->userLike[] = $userLike;
+            $userLike->addPostLike($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserLike(User $userLike): self
+    {
+        if ($this->userLike->removeElement($userLike)) {
+            $userLike->removePostLike($this);
+        }
+
+        return $this;
+    }
+
 }

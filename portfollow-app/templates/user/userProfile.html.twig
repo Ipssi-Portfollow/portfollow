@@ -6,11 +6,15 @@
 <div class="profil">
     <div class="userInfo">
         <div class= "image">
-            <img style = "height: 150px; width: 150px; border-radius:100px;" src="{{ asset('images/lion.jpg') }}">
+            <img style = "height: 150px; width: 150px; border-radius:100px;" src="{{ asset('/uploads/' ~ user.pict) }}">
         </div>
         <div class= "infos">
-            <h1 class="pseudo">{{user.pseudo}}   <a class="btn btn-success" style="font-weight: bold; font-size: 16px; border-radius: 100px;" href="{{ path('NewPost') }}"><strong>+</strong></a>
-</h1>
+            <h1 class="pseudo">{{user.pseudo}}   
+            {% if app.user.id == user.id %}
+                <a class="btn btn-success" style="font-weight: bold; font-size: 16px; border-radius: 100px;" href="{{ path('NewPost') }}"><strong>nouvelle oeuvre !</strong></a>
+                <a class="btn btn-success" style="font-weight: bold; font-size: 16px; border-radius: 100px;" href="/abonnement/{{ user.id }}"><strong>abonnement</strong></a>
+            {% endif %}
+            </h1>
             <br>
             {{user.bio}}
         </div>
@@ -19,7 +23,13 @@
     <div class="posts">
         {% for post in posts %}
         <div class = "post">
-            {{ post.picts}}
+            <div>
+                {{ post.title}}
+            </div>
+            {% set image = post.images|first %}
+            {% if image != false %}
+                <img src="{{ asset('/uploads/' ~ image.pictName) }}" width="150px" height="150px">
+            {% endif %}
             <br>
             <td><a class="btn btn-primary" href="/ShowPost/{{ post.id }}">Voir Plus</a></td>
         </div>  

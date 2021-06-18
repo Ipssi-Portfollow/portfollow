@@ -15,8 +15,11 @@
                 <p>{{ post.localisation }}</p>
             </div>
             <div class = "post_image_home">
-                    {{ post.picts }}
-            </div>    
+            {% set image = post.images|first %}
+            {% if image != false %}
+                <img src="{{ asset('/uploads/' ~ image.pictName) }}" width="150px" height="150px">
+            {% endif %}
+            </div>
             <div class="post_footer_home">
                 <div class="prem_lign_foot">
                     <a style ="margin-right: 15px;" href="user/{{ post.user.id() }}" >{{ post.user.pseudo}}</a>
