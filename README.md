@@ -10,7 +10,7 @@ We let you discover the application.
 This repository holds Portfollow code.
 In order to run the project in local you will need to check your local machine requirements.
 
-* to properly start the project locally, you should add the .env file to the root of the folder portfollow-app. This file can be found here --> [Contributing to project-timer guide](https://github.com/Ipssi-Portfollow/portfollow/doc/.env
+* to properly start the project locally, you should add the .env file to the root of the folder portfollow-app. This file can be found here --> (https://github.com/Ipssi-Portfollow/portfollow/doc/.env
 ## Requirements
 - Symfony 5
 - A LAMP like WAMP or MAMP who will create the PHP server 
