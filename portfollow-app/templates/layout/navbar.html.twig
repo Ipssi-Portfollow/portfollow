@@ -57,8 +57,12 @@
     </form>
 
     <li class="nav-item deco">
-        <a class="btn btn-danger" class="nav-link" href="/logout">Déconnexion</a>
-      </li>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a class="btn btn-danger" class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+        {% else %}
+        <a class="btn btn-success" class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+        {% endif %}
+    </li>
   </div>
 </nav>
 

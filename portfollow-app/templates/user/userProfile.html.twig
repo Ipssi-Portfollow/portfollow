@@ -35,15 +35,50 @@
         <div class= "infos">
             <h1 class="pseudo">{{user.pseudo}}   
                 <a class="btn btn-primary" style="font-weight: bold; font-size: 16px; border-radius: 5px;" href="/abonnement/{{ user.id }}"><strong>Abonnements</strong></a>
-            {% if app.user.id == user.id %}
+                {% if app.user.id is defined %}
+                {% if app.user.id == user.id %}
                 <a class="btn btn-primary" style="font-weight: bold; font-size: 16px; border-radius: 5px;" title="Ajouter un post" href="{{ path('NewPost') }}"><strong>+</strong></a>
+                <br>
+                <button id="update" class="btn btn-outline-primary"> Modifier mon profil</button>
+                <a href="{{ path('delete_my_profile',{id: app.user.id}) }}" class="btn btn-outline-danger" style="font-weight: bold; font-size: 16px; border-radius: 5px;"><strong>Supprimer mon compte</strong></a>
+                {% endif %}
             {% endif %}
+
             </h1>
+
             <br>
             {{user.bio}}
         </div>
-    </div>
 
+    </div>
+    <div id="modify">
+        {{ form_start(form) }}
+        <div>
+            {{ form_label(form.pseudo) }}
+            {{ form_widget(form.pseudo, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div>
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div>
+            {{ form_row(form.password.first, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div>
+            {{ form_row(form.password.second, {'attr': {'class': 'form-control'}}) }}
+        </div><br>
+        <div>
+            {{ form_label(form.image) }}
+            {{ form_widget(form.image) }}
+        </div>
+        <div >
+            {{ form_label(form.bio) }}
+            {{ form_widget(form.bio, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <br>
+        {{ form_end(form) }}
+    </div>
     <div class="posts">
         {% for post in posts %}
         <div class = "post">
@@ -59,5 +94,27 @@
     </div>
 </div>
 
-  
+
+    <script>
+        var button = document.getElementById("update");
+        var deletebtn = document.getElementById("buttonDelete");
+        var modify = document.getElementById("modify");
+        let hidden = true;
+        modify.style.display="none";
+        button.addEventListener('click', () => {
+            if(hidden){
+                modify.style.display="block";
+                modify.style.width="70%";
+                button.textContent="Annuler la modification";
+                hidden = false;
+            }
+            else {
+                button.textContent="Modifier le profil"
+                modify.style.display="none";
+                hidden = true;
+            }
+        });
+    </script>
+
+
 {% endblock %}

@@ -4,8 +4,11 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Abonnement;
+use App\Form\UserProfileType;
 use App\Form\UserRegistrationType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\PostRepository;
 use App\Repository\AbonnementRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -38,23 +41,32 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/user/{id}", name="userProfile", methods={"GET"})
+     * @Route("/user/{id}", name="userProfile")
      */
-    public function userProfile(UserRepository $userRepository, int $id): Response
+    public function userProfile(string $id, Request $request, UserRepository $userRepository, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        $user = $userRepository->findOneById($id);
+        $user = $userRepository->find($id);
+        $form = $this->createForm(UserProfileType::class, $user);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $password = $passwordEncoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($password);
+            $entityManager->persist($user);
+            $entityManager->flush();
+        }
         $posts = $user->getPosts();
         if($user != null){
             return $this->render('user/userProfile.html.twig', [
                 'user' => $user,
                 'posts' => $posts,
+                'form' => $form->createView(),
             ]);
         }else{
             return $this->render('error.html.twig', [
                 'error' => "le compte n'as pas été trouvé",
             ]);
         }
-        
     }
 
     /**
@@ -165,5 +177,13 @@ class UserController extends AbstractController
         return $this->render('error.html.twig', [
             'error' => "Vous ne pouvez pas vous connecter à vous même :(",
         ]);   
+    }
+
+    /**
+     * @Route("/delete_my_profile/{id}", name="delete_my_profile")
+     * @IsGranted("ROLE_USER")
+     */
+    public function delete(){
+
     }
 }
