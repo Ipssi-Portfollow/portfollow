@@ -73,11 +73,19 @@ class PostController extends AbstractController
     public function ShowPost(PostRepository $postRepository, CommentRepository $commentRepository, int $id): Response
     {
         $post = $postRepository->findOneById($id);
-        $comments = $commentRepository->findBy(array('post' =>  $post) );
+        $comments = $commentRepository->findBy(array('post' =>  $post ) );
+        $likers = $post->getUserLike();
+        $allReadyLike = $likers->contains($this->getUser());
+
+        
+        $countLike = count($likers);
 
         return $this->render('post/show.html.twig', [
             'post' => $post,
             'comments' => $comments,
+            'liker' => $likers,
+            'allReadyLike' => $allReadyLike,
+            'countLike' => $countLike,
         ]);
     }
 
@@ -174,6 +182,43 @@ class PostController extends AbstractController
 
         return $this->redirectToRoute('userProfile', array(
             'id' => $this->getUser()->getId()
+        ));
+    }
+
+    /**
+     * @Route("/likePost/{id}", name="likePost", methods={"GET"})
+     */
+    public function likePost(PostRepository $postRepository,CommentRepository $commentRepository, int $id): Response
+    {
+        $user = $this->getUser();
+        $post = $postRepository->findOneById($id);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $post->addUserLike($user);
+        $entityManager->persist($post);
+        $entityManager->flush();
+        $comments = $commentRepository->findBy(array('post' =>  $post ) );
+
+        return $this->redirectToRoute('ShowPost', array(
+            'id' => $id
+        ));
+    }
+    /**
+     * @Route("/dislikePost/{id}", name="dislikePost", methods={"GET"})
+     */
+    public function dislikePost(PostRepository $postRepository,CommentRepository $commentRepository, int $id): Response
+    {
+        $user = $this->getUser();
+        $post = $postRepository->findOneById($id);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $post->removeUserLike($user);
+        $entityManager->persist($post);
+        $entityManager->flush();
+        $comments = $commentRepository->findBy(array('post' =>  $post ) );
+
+        return $this->redirectToRoute('ShowPost', array(
+            'id' => $id
         ));
     }
 }
