@@ -1,8 +1,8 @@
-## How to contribute to Project Timer
+## How to contribute to Portfollow
 
 First off, thanks for taking the time to contribute! 😍👌
 
-The following is a set of guidelines for contributing to Project Timer. Use your best judgment, and feel free to propose changes to this document.
+The following is a set of guidelines for contributing to Portfollow. Use your best judgment, and feel free to propose changes to this document.
 
 We want to make contributing to this project as easy and transparent as possible, whether it's:
 
@@ -40,12 +40,12 @@ By participating, you are expected to uphold this code. Please report unacceptab
 People *love* thorough bug reports. we are not even kidding.
 
 ## Any contributions you make will be under the MIT Software License
-In short, when you submit code changes, your submissions are understood to be under the same [MIT License](https://github.com/Abdoulaye224/Project-timer/blob/master/LICENSE) that covers the project. Feel free to contact the maintainers if that's a concern.
+In short, when you submit code changes, your submissions are understood to be under the same [MIT License](https://github.com/Ipssi-Portfollow/portfollow/blob/main/LICENSE) that covers the project. Feel free to contact the maintainers if that's a concern.
 
 ## We Develop with Github
 We use github to host code, to track issues and feature requests, as well as accept pull requests.
 
-## Report bugs using Github's [issues](https://github.com/Abdoulaye224/Project-timer/issues)
+## Report bugs using Github's [issues](https://github.com/Ipssi-Portfollow/portfollow/issues)
 We use GitHub issues to track public bugs. Report a bug by [opening a new issue](); it's that easy!
 
 ## License
