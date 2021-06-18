@@ -88,18 +88,13 @@
                     {% endif %}
 
                         <div style="display: flex; justify-content: space-between; width: 100%;">
-                        <div>
-                        {% if countLike < 2 %}
-                            {{ countLike }} like
-                        {% else %}
-                            {{ countLike }} likes
-                        {% endif %}
-                        </div>
-                        <div>
-                        {% if app.user.id != post.user.id %}
-                            <a class = "btn btn-primary" href="/sub/{{ post.user.id }}">S'abonner</a>
-                        {% endif %}
-                        </div>
+                            <div>
+                            {% if countLike < 2 %}
+                                {{ countLike }} like
+                            {% else %}
+                                {{ countLike }} likes
+                            {% endif %}
+                            </div>
                         </div>
                     {% endif %}
                 </div>
