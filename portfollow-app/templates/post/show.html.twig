@@ -27,6 +27,14 @@
     color: black!important; 
     background-color: white!important;
 }
+
+.image_post{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        height: 300px;
+        width: 100%;
+    }
 </style>
 
 {% include 'layout/navbar.html.twig'%}
@@ -36,22 +44,30 @@
             <div class = "post_header_home">
                 <div class="prem_lign_head">
                     <p class="spec">{{ post.title }}</p>
-                    <a class = "btn btn-success" href="/EditPost/{{ post.id }}">Ajouter des posts</a>
+                    {% if app.user.id is defined %}
+                    {% if app.user.id == post.user.id %}
+                    <a class = "btn btn-primary" href="/EditPost/{{ post.id }}">Modifier</a>
+                    {% endif %}
+                    {% endif %}
                 </div>
                 <p>{{ post.localisation }}</p>
             </div>
             <div class = "post_image_home" style="position:relative; display: block;">
                 {% for image in post.images %}
                 <div class = "slide">
-                    <img src="{{ asset('/uploads/' ~ image.pictName) }}" width="100%;" height="300px;">
-                    
+                    <div class="image_post" style="background-image: url({{ asset('/uploads/' ~ image.pictName) }})">
+                    </div>
+                    {% if post.images|length > 1  %}
                     <button class="btn aff w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
                     <button class="btn aff w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+                    {% endif %}
+                    {% if app.user.id is defined %}
                     {% if image.post.user.id == app.user.id %}
                     
                         <div style= "text-align: center; padding: 20px;">
                             <a class="btn btn-danger" style="margin:auto; text-align: center" href="/deletImage/{{ image.id }}">Supprimer l'image</a>
                         </div>
+                    {% endif %}
                     {% endif %}
                 </div>
                 {% endfor %}
@@ -61,24 +77,53 @@
                     <a style ="color: black; font-weight: bold; margin-right: 15px;" href="/user/{{ post.user.id() }}" >{{ post.user.pseudo}}</a>
                     {{ post.description }}
                 </div>
+                <div class="prem_lign_foot">
+                    {% if app.user.id is defined %}
+                    {% if app.user.id != null %}
+                        {% if allReadyLike != true %}
+                            <a style = "margin-right: 15px;" href="/likePost/{{ post.id }}"><i class="fas fa-heart" style="font-size: 20px; color: grey;"></i></a>
+                        {% elseif allReadyLike == true %}
+                            <a style = "margin-right: 15px;"  href="/dislikePost/{{ post.id }}"><i class="fas fa-heart" style="font-size: 20px; color: red;"></i></a>
+                        {% endif %}
+                    {% endif %}
+
+                        <div style="display: flex; justify-content: space-between; width: 100%;">
+                        <div>
+                        {% if countLike < 2 %}
+                            {{ countLike }} like
+                        {% else %}
+                            {{ countLike }} likes
+                        {% endif %}
+                        </div>
+                        <div>
+                        {% if app.user.id != post.user.id %}
+                            <a class = "btn btn-primary" href="/sub/{{ post.user.id }}">S'abonner</a>
+                        {% endif %}
+                        </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <form action="/NewComment/{{ post.id }}" method="post">
+                            <div class="form-example" style="display: flex; padding: 0px;" >
+                                <input type="text" placeholder="Ajouter une critique" class="form-control" name="critique" id="critique" required>
+                                <input class="btn" type="submit" value="Publier">
+                            </div>
+                        </form>
                 <div class = "commentaire">
                     {% if comments != null %}
                         {% for comment in comments %}
                         <div style = "display: flex; justify-content: space-between; padding-left: 10px; padding-right: 10px;">
                             <p> <a style ="margin-right: 15px;" href="/user/{{ post.user.id() }}" >{{comment.user.pseudo}}</a>{{comment.text}}</p>
+                            {% if app.user.id is defined %}
                             {% if comment.user.id == app.user.id %}
                                 <a href="/EditComment/{{comment.id}}"> Modifier </a>
+                            {% endif %}
                             {% endif %}
                         </div>
                         {% endfor %}
                     {% endif %}
                      <div>
-                        <form action="/NewComment/{{ post.id }}" method="post">
-                            <div class="form-example" style="display: flex; padding: 0px;" >
-                                <input type="text" class="form-control" name="critique" id="critique" required>
-                                <input class="btn" type="submit" value="Publier">
-                            </div>
-                        </form>
+                        
                     </div>
                 </div>
             </div>

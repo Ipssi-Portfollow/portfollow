@@ -71,6 +71,7 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity=Post::class, mappedBy="User")
+     * @ORM\OrderBy({"addDate" = "DESC"})
      */
     private $posts;
 
@@ -79,10 +80,23 @@ class User implements UserInterface
      */
     private $comments;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=post::class, inversedBy="userLike")
+     */
+    private $postLike;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Abonnement::class, mappedBy="following")
+     */
+    private $followings;
+
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->postLike = new ArrayCollection();
+        $this->followings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -234,4 +248,56 @@ class User implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+
+    /**
+     * @return Collection|post[]
+     */
+    public function getPostLike(): Collection
+    {
+        return $this->postLike;
+    }
+
+    public function addPostLike(post $postLike): self
+    {
+        if (!$this->postLike->contains($postLike)) {
+            $this->postLike[] = $postLike;
+        }
+
+        return $this;
+    }
+
+    public function removePostLike(post $postLike): self
+    {
+        $this->postLike->removeElement($postLike);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Abonnement[]
+     */
+    public function getFollowings(): Collection
+    {
+        return $this->followings;
+    }
+
+    public function addFollowing(Abonnement $following): self
+    {
+        if (!$this->followings->contains($following)) {
+            $this->followings[] = $following;
+            $following->addFollowing($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFollowing(Abonnement $following): self
+    {
+        if ($this->followings->removeElement($following)) {
+            $following->removeFollowing($this);
+        }
+
+        return $this;
+    }
+
 }

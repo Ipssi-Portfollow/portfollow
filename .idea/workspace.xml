@@ -30,13 +30,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e7a2572-b8fd-497f-b5de-f595cd34c84e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/portfollow-app/templates/user/_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfollow-app/templates/user/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/portfollow-app/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/portfollow-app/src/Entity/User.php" afterDir="false" />
-    </list>
+    <list default="true" id="7e7a2572-b8fd-497f-b5de-f595cd34c84e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -159,6 +153,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1pmrSyN1eNWYAmDWYqTOGEbklGW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -230,6 +225,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="964" y="-840" key="#com.intellij.ide.util.MemberChooser" timestamp="1615808906719">

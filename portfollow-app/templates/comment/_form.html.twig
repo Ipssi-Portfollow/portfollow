@@ -5,12 +5,12 @@
             {{ form_start(form) }}
             <h1 style="text-align:center;">Critique</h1>
             <div >
-                {{ form_label(form.text) }}
+                <label>Critique</label>
                 {{ form_widget(form.text, {'attr': {'class': 'form-control'}}) }}
             </div>   
 
             <br>
-            <button style="width:100%;"class="btn btn-primary">{{ button_label|default('Ajouter post') }}</button>
+            <button style="width:100%;"class="btn btn-primary">{{ button_label|default('Modifier votre critique') }}</button>
 
             {{ form_end(form) }}
     </div>

@@ -3,29 +3,116 @@
 <br>
 {% block body %}
 
+<style>
+
+.image_post{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        height: 300px;
+        width: 100%;
+    }
+
+.image{
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-position: 50% 50%;
+     height: 150px;
+     width: 150px;
+     border-radius:100px;
+}
+
+.post{
+    text-align: center;
+}
+
+</style>
+
 <div class="profil">
     <div class="userInfo">
-        <div class= "image">
-            <img style = "height: 150px; width: 150px; border-radius:100px;" src="{{ asset('images/lion.jpg') }}">
+        <div class= "image" style="background-image: url({{ asset('/uploads/' ~ user.pict) }})">
         </div>
         <div class= "infos">
-            <h1 class="pseudo">{{user.pseudo}}   <a class="btn btn-success" style="font-weight: bold; font-size: 16px; border-radius: 100px;" href="{{ path('NewPost') }}"><strong>+</strong></a>
-</h1>
+            <h1 class="pseudo">{{user.pseudo}}   
+                {% if app.user.id is defined %}
+                {% if app.user.id == user.id %}
+                <a class="btn btn-primary" style="font-weight: bold; font-size: 16px; border-radius: 5px;" title="Ajouter un post" href="{{ path('NewPost') }}"><strong>+</strong></a>
+                <br>
+                <strong><button id="update" class="btn mt-2 btn-outline-primary"> Modifier mon profil</button></strong>
+                {% endif %}
+            {% endif %}
+
+            </h1>
+
             <br>
             {{user.bio}}
         </div>
-    </div>
 
+    </div>
+    <div id="modify">
+        {{ form_start(form) }}
+        <div>
+            {{ form_label(form.pseudo) }}
+            {{ form_widget(form.pseudo, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div>
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div>
+            {{ form_row(form.password.first, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div>
+            {{ form_row(form.password.second, {'attr': {'class': 'form-control'}}) }}
+        </div><br>
+        <div>
+            {{ form_label(form.image) }}
+            {{ form_widget(form.image) }}
+        </div>
+        <div >
+            {{ form_label(form.bio) }}
+            {{ form_widget(form.bio, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <br>
+        {{ form_end(form) }}
+    </div>
     <div class="posts">
         {% for post in posts %}
         <div class = "post">
-            {{ post.picts}}
+            {% set image = post.images|first %}
+            {% if image != false %}
+                <div class="image_post" style="background-image: url({{ asset('/uploads/' ~ image.pictName) }})">
+                    </div>
+            {% endif %}
             <br>
-            <td><a class="btn btn-primary" href="/ShowPost/{{ post.id }}">Voir Plus</a></td>
+            <a class="btn btn-primary" href="/ShowPost/{{ post.id }}">Voir Plus</a>
         </div>  
         {% endfor %}
     </div>
 </div>
 
-  
+
+    <script>
+        var button = document.getElementById("update");
+        var deletebtn = document.getElementById("buttonDelete");
+        var modify = document.getElementById("modify");
+        let hidden = true;
+        modify.style.display="none";
+        button.addEventListener('click', () => {
+            if(hidden){
+                modify.style.display="block";
+                modify.style.width="70%";
+                button.textContent="Annuler la modification";
+                hidden = false;
+            }
+            else {
+                button.textContent="Modifier le profil"
+                modify.style.display="none";
+                hidden = true;
+            }
+        });
+    </script>
+
+
 {% endblock %}
