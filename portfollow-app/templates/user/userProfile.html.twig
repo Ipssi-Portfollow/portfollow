@@ -34,13 +34,11 @@
         </div>
         <div class= "infos">
             <h1 class="pseudo">{{user.pseudo}}   
-                <a class="btn btn-primary" style="font-weight: bold; font-size: 16px; border-radius: 5px;" href="/abonnement/{{ user.id }}"><strong>Abonnements</strong></a>
                 {% if app.user.id is defined %}
                 {% if app.user.id == user.id %}
                 <a class="btn btn-primary" style="font-weight: bold; font-size: 16px; border-radius: 5px;" title="Ajouter un post" href="{{ path('NewPost') }}"><strong>+</strong></a>
                 <br>
-                <button id="update" class="btn btn-outline-primary"> Modifier mon profil</button>
-                <a href="{{ path('delete_my_profile',{id: app.user.id}) }}" class="btn btn-outline-danger" style="font-weight: bold; font-size: 16px; border-radius: 5px;"><strong>Supprimer mon compte</strong></a>
+                <strong><button id="update" class="btn mt-2 btn-outline-primary"> Modifier mon profil</button></strong>
                 {% endif %}
             {% endif %}
 

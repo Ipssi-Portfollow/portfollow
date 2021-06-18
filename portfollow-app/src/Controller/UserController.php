@@ -19,6 +19,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserController extends AbstractController
 {
+
     /**
      * @Route("/user", name="user_index", methods={"GET"})
      */
@@ -52,6 +53,17 @@ class UserController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $password = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
+            $image = $form->get('image')->getData();
+            if($image != null){
+                $fichier = md5(uniqid()). '.' . $image->guessExtension();
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+                $user->setPict($fichier);
+            }else{
+                $user->setPict('user.png');
+            }
             $entityManager->persist($user);
             $entityManager->flush();
         }
@@ -138,7 +150,7 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('user/new.html.twig', [
@@ -179,11 +191,4 @@ class UserController extends AbstractController
         ]);   
     }
 
-    /**
-     * @Route("/delete_my_profile/{id}", name="delete_my_profile")
-     * @IsGranted("ROLE_USER")
-     */
-    public function delete(){
-
-    }
 }
