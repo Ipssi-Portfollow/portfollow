@@ -28,7 +28,7 @@
     background-color: white!important;
 }
 
-.image{
+.image_post{
         background-size: cover;
         background-repeat: no-repeat;
         background-position: 50% 50%;
@@ -55,9 +55,8 @@
             <div class = "post_image_home" style="position:relative; display: block;">
                 {% for image in post.images %}
                 <div class = "slide">
-                    <div class="image" style="background-image: url({{ asset('/uploads/' ~ image.pictName) }})">
+                    <div class="image_post" style="background-image: url({{ asset('/uploads/' ~ image.pictName) }})">
                     </div>
-                    <!--<img src="{{ asset('/uploads/' ~ image.pictName) }}" width="100%;" height="300px;">-->
                     {% if post.images|length > 1  %}
                     <button class="btn aff w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
                     <button class="btn aff w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
