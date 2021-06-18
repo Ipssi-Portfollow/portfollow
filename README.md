@@ -8,7 +8,7 @@ We let you discover the application.
 ## Getting started
 
 This repository holds Portfollow code.
-In order to run the project you will need to check your local machine requirements.
+In order to run the project in local you will need to check your local machine requirements.
 
 ## Requirements
 - Symfony 5
