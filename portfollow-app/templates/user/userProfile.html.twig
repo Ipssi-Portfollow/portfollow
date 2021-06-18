@@ -3,16 +3,40 @@
 <br>
 {% block body %}
 
+<style>
+
+.image_post{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        height: 300px;
+        width: 100%;
+    }
+
+.image{
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-position: 50% 50%;
+     height: 150px;
+     width: 150px;
+     border-radius:100px;
+}
+
+.post{
+    text-align: center;
+}
+
+</style>
+
 <div class="profil">
     <div class="userInfo">
-        <div class= "image">
-            <img style = "height: 150px; width: 150px; border-radius:100px;" src="{{ asset('/uploads/' ~ user.pict) }}">
+        <div class= "image" style="background-image: url({{ asset('/uploads/' ~ user.pict) }})">
         </div>
         <div class= "infos">
             <h1 class="pseudo">{{user.pseudo}}   
+                <a class="btn btn-primary" style="font-weight: bold; font-size: 16px; border-radius: 5px;" href="/abonnement/{{ user.id }}"><strong>Abonnements</strong></a>
             {% if app.user.id == user.id %}
-                <a class="btn btn-success" style="font-weight: bold; font-size: 16px; border-radius: 100px;" href="{{ path('NewPost') }}"><strong>nouvelle oeuvre !</strong></a>
-                <a class="btn btn-success" style="font-weight: bold; font-size: 16px; border-radius: 100px;" href="/abonnement/{{ user.id }}"><strong>abonnement</strong></a>
+                <a class="btn btn-primary" style="font-weight: bold; font-size: 16px; border-radius: 5px;" title="Ajouter un post" href="{{ path('NewPost') }}"><strong>+</strong></a>
             {% endif %}
             </h1>
             <br>
@@ -23,15 +47,13 @@
     <div class="posts">
         {% for post in posts %}
         <div class = "post">
-            <div>
-                {{ post.title}}
-            </div>
             {% set image = post.images|first %}
             {% if image != false %}
-                <img src="{{ asset('/uploads/' ~ image.pictName) }}" width="150px" height="150px">
+                <div class="image_post" style="background-image: url({{ asset('/uploads/' ~ image.pictName) }})">
+                    </div>
             {% endif %}
             <br>
-            <td><a class="btn btn-primary" href="/ShowPost/{{ post.id }}">Voir Plus</a></td>
+            <a class="btn btn-primary" href="/ShowPost/{{ post.id }}">Voir Plus</a>
         </div>  
         {% endfor %}
     </div>

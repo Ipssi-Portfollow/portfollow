@@ -6,6 +6,16 @@
   display: none!important;
 }
 
+
+.image{
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-position: 50% 50%;
+     height: 150px;
+     width: 150px;
+     border-radius:100px;
+}
+
 </style>
 <head>
     <meta charset="UTF-8" />
@@ -61,7 +71,7 @@
             console.log(data)
 
             if(data.length > 0 ){
-                let url = "https://127.0.0.1:8000/user/recherche/"+data;
+                let url = "http://127.0.0.1:8000/user/recherche/"+data;
                 console.log('coucou')
                 window.open(url, '_blank')
              //   location.href = url
