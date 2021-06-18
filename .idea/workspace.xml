@@ -30,7 +30,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e7a2572-b8fd-497f-b5de-f595cd34c84e" name="Default Changelist" comment="" />
+    <list default="true" id="7e7a2572-b8fd-497f-b5de-f595cd34c84e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/portfollow-app/src/Entity/PropertySearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portfollow-app/templates/search/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/portfollow-app/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfollow-app/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/portfollow-app/src/Repository/UserRepository.php" afterDir="false" />
+    </list>
+    <list id="7bd2afb5-4374-4148-a06b-b3ea088160de" name="localstorage" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -161,13 +168,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/portfollow-app/templates/user" />
+    <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/portfollow-app/templates/search" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/portfollow-app/templates/search" />
       <recent name="$PROJECT_DIR$/portfollow-app/templates/user" />
     </key>
   </component>
@@ -226,15 +235,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="964" y="-840" key="#com.intellij.ide.util.MemberChooser" timestamp="1615808906719">
-      <screen x="195" y="-1080" width="1920" height="1080" />
-    </state>
-    <state x="964" y="-840" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900/195.-1080.1920.1080@195.-1080.1920.1080" timestamp="1615808906719" />
-    <state x="893" y="-767" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615809281233">
-      <screen x="195" y="-1080" width="1920" height="1080" />
-    </state>
-    <state x="893" y="-767" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900/195.-1080.1920.1080@195.-1080.1920.1080" timestamp="1615809281233" />
   </component>
 </project>

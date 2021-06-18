@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Abonnement;
 use App\Form\UserProfileType;
+use App\Form\UserRegistrationType;
 use App\Repository\UserRepository;
 use App\Repository\PostRepository;
 use App\Repository\AbonnementRepository;

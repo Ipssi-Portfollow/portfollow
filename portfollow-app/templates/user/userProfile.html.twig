@@ -36,13 +36,9 @@
             <h1 class="pseudo">{{user.pseudo}}   
                 <a class="btn btn-primary" style="font-weight: bold; font-size: 16px; border-radius: 5px;" href="/abonnement/{{ user.id }}"><strong>Abonnements</strong></a>
             {% if app.user.id == user.id %}
-<<<<<<< HEAD
                 <a class="btn btn-success" style="font-weight: bold; font-size: 16px; border-radius: 100px;" href="{{ path('NewPost') }}"><strong>nouvelle oeuvre !</strong></a>
                 <a class="btn btn-success" style="font-weight: bold; font-size: 16px; border-radius: 100px;" href="/abonnement/{{ user.id }}"><strong>abonnement</strong></a>
                 <button id = "button" class="btn btn-primary">Modifier mon profil</button>
-=======
-                <a class="btn btn-primary" style="font-weight: bold; font-size: 16px; border-radius: 5px;" title="Ajouter un post" href="{{ path('NewPost') }}"><strong>+</strong></a>
->>>>>>> 1f8301e6aed405e67980e291a9c0649bc2706bbf
             {% endif %}
             </h1>
             <br>
