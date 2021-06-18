@@ -3,7 +3,7 @@
 {% include 'layout/navbar.html.twig'%}
 <style>
 
-.image{
+.image_post{
         background-size: cover;
         background-repeat: no-repeat;
         background-position: 50% 50%;
@@ -28,7 +28,7 @@
             <div class = "post_image_home">
             {% set image = post.images|first %}
             {% if image != false %}
-                 <div class="image" style="background-image: url({{ asset('/uploads/' ~ image.pictName) }})">
+                 <div class="image_post" style="background-image: url({{ asset('/uploads/' ~ image.pictName) }})">
                     </div>
             {% endif %}
             </div>
