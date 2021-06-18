@@ -1,6 +1,17 @@
 {% block body %}
 
 {% include 'layout/navbar.html.twig'%}
+<style>
+
+.image{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        height: 300px;
+        width: 100%;
+    }
+
+</style>
 
 <br>
 
@@ -17,7 +28,8 @@
             <div class = "post_image_home">
             {% set image = post.images|first %}
             {% if image != false %}
-                <img src="{{ asset('/uploads/' ~ image.pictName) }}" width="150px" height="150px">
+                 <div class="image" style="background-image: url({{ asset('/uploads/' ~ image.pictName) }})">
+                    </div>
             {% endif %}
             </div>
             <div class="post_footer_home">

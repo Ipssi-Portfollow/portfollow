@@ -45,19 +45,7 @@
                 <div class="prem_lign_head">
                     <p class="spec">{{ post.title }}</p>
                     {% if app.user.id == post.user.id %}
-                    <a class = "btn btn-success" href="/EditPost/{{ post.id }}">Modifier</a>
-                    {% endif %}
-                    
-                    {% if app.user.id != null %}
-                        {{ countLike }} LIKE !
-                        {% if allReadyLike != true %}
-                        <a class = "btn btn-danger" href="/likePost/{{ post.id }}">Liker</a>
-                        {% elseif allReadyLike == true %}
-                        <a class = "btn btn-danger" href="/dislikePost/{{ post.id }}">Disliker</a>
-                        {% endif %}
-                        {% if app.user.id != post.user.id %}
-                            <a class = "btn btn-danger" href="/sub/{{ post.user.id }}">s'abonner à {{ post.user.pseudo }}</a>
-                        {% endif %}
+                    <a class = "btn btn-primary" href="/EditPost/{{ post.id }}">Modifier</a>
                     {% endif %}
                 </div>
                 <p>{{ post.localisation }}</p>
@@ -85,6 +73,29 @@
                 <div class="prem_lign_foot">
                     <a style ="color: black; font-weight: bold; margin-right: 15px;" href="/user/{{ post.user.id() }}" >{{ post.user.pseudo}}</a>
                     {{ post.description }}
+                </div>
+                <div class="prem_lign_foot">
+                    {% if app.user.id != null %}
+                        {% if allReadyLike != true %}
+                            <a style = "margin-right: 15px;" href="/likePost/{{ post.id }}"><i class="fas fa-heart" style="font-size: 20px; color: grey;"></i></a>
+                        {% elseif allReadyLike == true %}
+                            <a style = "margin-right: 15px;"  href="/dislikePost/{{ post.id }}"><i class="fas fa-heart" style="font-size: 20px; color: red;"></i></a>
+                        {% endif %}
+                        <div style="display: flex; justify-content: space-between; width: 100%;">
+                        <div>
+                        {% if countLike < 2 %}
+                            {{ countLike }} like
+                        {% else %}
+                            {{ countLike }} likes
+                        {% endif %}
+                        </div>
+                        <div>
+                        {% if app.user.id != post.user.id %}
+                            <a class = "btn btn-primary" href="/sub/{{ post.user.id }}">S'abonner</a>
+                        {% endif %}
+                        </div>
+                        </div>
+                    {% endif %}
                 </div>
                 <form action="/NewComment/{{ post.id }}" method="post">
                             <div class="form-example" style="display: flex; padding: 0px;" >
