@@ -1,6 +1,17 @@
 {% block body %}
 
 {% include 'layout/navbar.html.twig'%}
+<style>
+
+.image_post{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        height: 300px;
+        width: 100%;
+    }
+
+</style>
 
 <br>
 
@@ -15,7 +26,11 @@
                 <p>{{ post.localisation }}</p>
             </div>
             <div class = "post_image_home">
-                    {{ post.picts }}
+            {% set image = post.images|first %}
+            {% if image != false %}
+                 <div class="image_post" style="background-image: url({{ asset('/uploads/' ~ image.pictName) }})">
+                    </div>
+            {% endif %}
             </div>
             <div class="post_footer_home">
                 <div class="prem_lign_foot">
@@ -26,4 +41,5 @@
         </div>
     {% endfor %}
 </div>
+
 {% endblock %}

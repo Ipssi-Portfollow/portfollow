@@ -1,8 +1,11 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}error{% endblock %}
+{% include 'layout/navbar.html.twig'%}
+
 
 {% block body %}
-    <h1>ERROR :(</h1>
+<div style="padding: 30px; border-radius: 30px; margin-top: 50vh;   transform: translateY(75%);
+ text-align: center; width: 30%; background-color: RGB(219,219,219); margin: auto; color: black; font-weight: bold;">
+    <h1>ERROR 404</h1>
     <h2>{{ error }}</h2>
+</div>
 {% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'layout/navbar.html.twig' %}
+
+<style>
+
+
+.image{
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-position: 50% 50%;
+     height: 20px;
+     width: 20px;
+     border-radius:100px;
+}
+
+
+
+</style>
+<br>
+
+    <h3 style="text-align: center;">Utilisateur(s) trouvé(s)</h3><br>
+
+    <div style="width: 50%; margin:auto; text-align: center;">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Pseudo</th>
+                <th>Accéder au profil</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.pseudo }}</td>
+                    <td><a class="nav-link" href="/user/{{ user.id }}">Profil</a></td>
+
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
