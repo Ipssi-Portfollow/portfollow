@@ -30,3 +30,13 @@ You can clone the repository on your machine and use the client as your own risk
     $ php bin/console make:migration 
 ```
 
+## Contributing
+We encourage you to contribute to Project-timer! Please check out the
+[Contributing to project-timer guide](https://github.com/Ipssi-Portfollow/portfollow/blob/main/CONTRIBUTING.md) for guidelines about how to proceed. [Join us!](https://github.com/Ipssi-Portfollow/portfollow)
+
+Everyone interacting in project-timer and its sub-projects' codebases, issue trackers, chat rooms, and mailing lists is expected to follow the project-timer [code of conduct](https://github.com/Ipssi-Portfollow/portfollow/blob/main/CODE_OF_CONDUCT.md).
+## Support
+
+Please
+[open an issue](https://github.com/Ipssi-Portfollow/portfollow/issues)
+for support.
