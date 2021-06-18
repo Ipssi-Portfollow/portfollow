@@ -13,6 +13,7 @@
             {% if app.user.id == user.id %}
                 <a class="btn btn-success" style="font-weight: bold; font-size: 16px; border-radius: 100px;" href="{{ path('NewPost') }}"><strong>nouvelle oeuvre !</strong></a>
                 <a class="btn btn-success" style="font-weight: bold; font-size: 16px; border-radius: 100px;" href="/abonnement/{{ user.id }}"><strong>abonnement</strong></a>
+                <button id = "button" class="btn btn-primary">Modifier mon profil</button>
             {% endif %}
             </h1>
             <br>
@@ -35,7 +36,29 @@
         </div>  
         {% endfor %}
     </div>
+
+    <div id = "modify">
+        {{ form(form) }}
+    </div>
 </div>
 
-  
+    <script>
+        var button = document.getElementById("button");
+        var modify = document.getElementById("modify");
+        let hidden = true;
+        modify.style.display="none";
+        button.addEventListener('click', () => {
+            if(hidden){
+                modify.style.display="block";
+                modify.style.width="70%";
+                button.textContent="Annuler la modification";
+                hidden = false;
+            }
+            else {
+                button.textContent="Modifier le profil"
+                modify.style.display="none";
+                hidden = true;
+            }
+        });
+    </script>
 {% endblock %}

@@ -46,9 +46,15 @@
       <button class="btn btn-outline-success my-2 my-sm-0" id="chercher" type="submit">Rechercher</button>
     </form>
 
-    <li class="nav-item deco">
-        <a class="btn btn-danger" class="nav-link" href="/logout">Déconnexion</a>
-      </li>
+      <ul class="nav-item deco" >
+          {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+          <li class="nav-item">
+              <a href="{{ path('app_logout') }}" class="btn mt-3 btn-danger">Déconnexion</a>
+              {% else %}
+                  <a href="{{ path('app_login') }}" class="btn mt-3 btn-success account">Connexion</a>
+              {% endif %}
+          </li>
+      </ul>
   </div>
 </nav>
 
@@ -66,8 +72,6 @@
                 window.open(url, '_blank')
              //   location.href = url
             }
-
-
         });
     </script>
 

@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Abonnement;
-use App\Form\UserRegistrationType;
+use App\Form\UserProfileType;
 use App\Repository\UserRepository;
 use App\Repository\PostRepository;
 use App\Repository\AbonnementRepository;
@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 class UserController extends AbstractController
 {
@@ -40,14 +41,31 @@ class UserController extends AbstractController
     /**
      * @Route("/user/{id}", name="userProfile", methods={"GET"})
      */
-    public function userProfile(UserRepository $userRepository, int $id): Response
+    public function userProfile(Request $request,UserRepository $userRepository, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $passwordEncoder, int $id): Response
     {
-        $user = $userRepository->findOneById($id);
+
+        $user = $this->getUser();
+
+        $form = $this->createForm(UserProfileType::class, $user);
+        $form->handleRequest($request);
+
         $posts = $user->getPosts();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $password = $passwordEncoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($password);
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('userProfile');
+        }
+
         if($user != null){
             return $this->render('user/userProfile.html.twig', [
                 'user' => $user,
                 'posts' => $posts,
+                'form' =>$form->createView(),
             ]);
         }else{
             return $this->render('error.html.twig', [
