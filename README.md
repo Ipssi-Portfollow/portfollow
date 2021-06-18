@@ -28,6 +28,8 @@ You can clone the repository on your machine and use the client as your own risk
 * To load differents entities to database
 ```   
     $ php bin/console make:migration 
+    
+    $ php bin/console doctrine:migrations:migrate
 ```
 
 ## Contributing
